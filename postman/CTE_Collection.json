@@ -1,0 +1,87 @@
+{
+  "info": {
+    "name": "Card Transaction Engine",
+    "_postman_id": "cte-v3",
+    "description": "Full API test suite.\nBase URL: {{base_url}} = http://localhost:8080\n\nDemo cards:\n  4123456789012345  PIN 1234  ACTIVE   ₹1000\n  4987654321098765  PIN 5678  ACTIVE   ₹2500\n  4111111111111111  PIN 9999  BLOCKED  ₹500",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base_url", "value": "http://localhost:8080" }],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{base_url}}/api/health" }
+    },
+    {
+      "name": "Withdraw — Success RC 00",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4123456789012345\",\"pin\":\"1234\",\"type\":\"withdraw\",\"amount\":200}" }
+      }
+    },
+    {
+      "name": "Top-up — Success RC 00",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4987654321098765\",\"pin\":\"5678\",\"type\":\"topup\",\"amount\":500}" }
+      }
+    },
+    {
+      "name": "Invalid Card RC 05",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"0000000000000000\",\"pin\":\"1234\",\"type\":\"withdraw\",\"amount\":100}" }
+      }
+    },
+    {
+      "name": "Invalid PIN RC 06",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4123456789012345\",\"pin\":\"0000\",\"type\":\"withdraw\",\"amount\":100}" }
+      }
+    },
+    {
+      "name": "Blocked Card RC 62",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4111111111111111\",\"pin\":\"9999\",\"type\":\"withdraw\",\"amount\":100}" }
+      }
+    },
+    {
+      "name": "Insufficient Balance RC 99",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4123456789012345\",\"pin\":\"1234\",\"type\":\"withdraw\",\"amount\":9999}" }
+      }
+    },
+    {
+      "name": "Invalid Type RC 12",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4123456789012345\",\"pin\":\"1234\",\"type\":\"transfer\",\"amount\":100}" }
+      }
+    },
+    {
+      "name": "Invalid Amount RC 13",
+      "request": {
+        "method": "POST", "url": "{{base_url}}/api/transaction",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\"cardNumber\":\"4123456789012345\",\"pin\":\"1234\",\"type\":\"withdraw\",\"amount\":-10}" }
+      }
+    },
+    {
+      "name": "Get Balance",
+      "request": { "method": "GET", "url": "{{base_url}}/api/card/balance/4123456789012345" }
+    },
+    {
+      "name": "Get Transaction History",
+      "request": { "method": "GET", "url": "{{base_url}}/api/card/transactions/4123456789012345" }
+    }
+  ]
+}

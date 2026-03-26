@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Card Transaction Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Barlow:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+
+  <header class="bar">
+    <div class="bar-brand">
+      <div class="bar-logo">CTE</div>
+      <div class="bar-title">Card Transaction Engine</div>
+    </div>
+    <div class="bar-status">
+      <span class="pulse" id="pulse"></span>
+      <span id="srvLabel">connecting</span>
+    </div>
+  </header>
+
+  <div class="root">
+
+    <aside class="pane pane-cards">
+      <div class="pane-head">
+        <span>Registered Cards</span>
+        <span class="badge" id="cardBadge">0</span>
+      </div>
+      <div class="card-list" id="cardList">
+        <div class="placeholder">loading...</div>
+      </div>
+    </aside>
+
+    <section class="pane pane-main">
+      <div class="pane-head">
+        <span>Transaction Console</span>
+        <span class="rc-pill" id="rcPill"></span>
+      </div>
+
+      <div class="form-wrap">
+        <div class="row-2">
+          <div class="field">
+            <label>Card Number</label>
+            <input id="iCard" type="text" placeholder="4123456789012345" maxlength="16" autocomplete="off"/>
+          </div>
+          <div class="field">
+            <label>PIN</label>
+            <input id="iPin" type="password" placeholder="••••" maxlength="8"/>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Transaction Type</label>
+          <div class="seg" id="seg">
+            <button class="seg-btn active" data-v="withdraw">Withdraw</button>
+            <button class="seg-btn"        data-v="topup">Top-up</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Amount</label>
+          <div class="prefix-wrap">
+            <span class="prefix">₹</span>
+            <input id="iAmt" type="number" placeholder="0.00" min="0.01" step="0.01"/>
+          </div>
+        </div>
+
+        <button class="btn-exec" id="btnExec">Process Transaction</button>
+
+        <div class="result-box hidden" id="resultBox">
+          <div class="result-title" id="resultTitle"></div>
+          <table class="result-table" id="resultTable"></table>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="lookup-wrap">
+        <div class="lookup-head">Quick Lookup</div>
+        <div class="row-2">
+          <div class="field">
+            <label>Card Number</label>
+            <input id="iLookup" type="text" placeholder="card number" maxlength="16" autocomplete="off"/>
+          </div>
+          <div class="field field-actions">
+            <label>&nbsp;</label>
+            <div class="action-row">
+              <button class="btn-sm" id="btnBal">Check Balance</button>
+              <button class="btn-sm" id="btnHist">History</button>
+            </div>
+          </div>
+        </div>
+        <div class="lookup-result hidden" id="lookupResult"></div>
+      </div>
+    </section>
+
+    <aside class="pane pane-feed">
+      <div class="pane-head">
+        <span>Activity Feed</span>
+        <button class="btn-clr" id="btnClr">clear</button>
+      </div>
+      <div class="feed-list" id="feedList">
+        <div class="placeholder">no activity yet</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

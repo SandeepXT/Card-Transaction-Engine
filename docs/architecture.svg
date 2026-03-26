@@ -1,0 +1,132 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI',Arial,sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3D2E12"/>
+    </marker>
+    <filter id="sh" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#C9A96A" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="900" height="560" fill="#FBF6EC"/>
+
+  <!-- title -->
+  <text x="450" y="38" text-anchor="middle" font-size="17" font-weight="800" fill="#1A1208" letter-spacing="1">CARD TRANSACTION ENGINE — SYSTEM ARCHITECTURE</text>
+  <line x1="60" y1="48" x2="840" y2="48" stroke="#C9A96A" stroke-width="1.5"/>
+
+  <!-- ── CLIENT LAYER ── -->
+  <rect x="60" y="70" width="780" height="90" rx="6" fill="#FDF8F0" stroke="#C9A96A" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="80" y="90" font-size="9" font-weight="800" fill="#6B5330" letter-spacing="1.5">CLIENT LAYER</text>
+
+  <!-- Browser -->
+  <rect x="110" y="100" width="140" height="44" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="180" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#1A1208">Browser / Web UI</text>
+  <text x="180" y="133" text-anchor="middle" font-size="9" fill="#3D2E12">HTML + CSS + Vanilla JS</text>
+
+  <!-- Postman -->
+  <rect x="380" y="100" width="140" height="44" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="450" y="118" text-anchor="middle" font-size="11" font-weight="700" fill="#1A1208">Postman / cURL</text>
+  <text x="450" y="133" text-anchor="middle" font-size="9" fill="#3D2E12">API Testing Client</text>
+
+  <!-- ── HTTP LAYER ── -->
+  <rect x="60" y="185" width="780" height="68" rx="6" fill="#FDF8F0" stroke="#C9A96A" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="80" y="204" font-size="9" font-weight="800" fill="#6B5330" letter-spacing="1.5">HTTP SERVER LAYER</text>
+
+  <rect x="110" y="212" width="178" height="32" rx="4" fill="#E8D4A8" stroke="#C9A96A" stroke-width="1.2"/>
+  <text x="199" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#1A1208">CORS Middleware</text>
+
+  <rect x="316" y="212" width="178" height="32" rx="4" fill="#E8D4A8" stroke="#C9A96A" stroke-width="1.2"/>
+  <text x="405" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#1A1208">Logger Middleware</text>
+
+  <rect x="522" y="212" width="198" height="32" rx="4" fill="#E8D4A8" stroke="#C9A96A" stroke-width="1.2"/>
+  <text x="621" y="232" text-anchor="middle" font-size="10" font-weight="700" fill="#1A1208">ServeMux Router</text>
+
+  <!-- ── HANDLER LAYER ── -->
+  <rect x="60" y="278" width="780" height="80" rx="6" fill="#FDF8F0" stroke="#C9A96A" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="80" y="297" font-size="9" font-weight="800" fill="#6B5330" letter-spacing="1.5">HANDLER LAYER</text>
+
+  <rect x="82"  y="306" width="138" height="38" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="151" y="321" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1A1208">POST /transaction</text>
+  <text x="151" y="336" text-anchor="middle" font-size="8.5" fill="#3D2E12">8-step validation</text>
+
+  <rect x="238" y="306" width="138" height="38" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="307" y="321" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1A1208">GET /balance/{id}</text>
+  <text x="307" y="336" text-anchor="middle" font-size="8.5" fill="#3D2E12">card lookup</text>
+
+  <rect x="394" y="306" width="152" height="38" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="470" y="321" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1A1208">GET /transactions/{id}</text>
+  <text x="470" y="336" text-anchor="middle" font-size="8.5" fill="#3D2E12">history snapshot</text>
+
+  <rect x="564" y="306" width="120" height="38" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="624" y="321" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1A1208">GET /health</text>
+  <text x="624" y="336" text-anchor="middle" font-size="8.5" fill="#3D2E12">liveness probe</text>
+
+  <rect x="702" y="306" width="120" height="38" rx="4" fill="#D6BB87" stroke="#A8884E" stroke-width="1.5"/>
+  <text x="762" y="321" text-anchor="middle" font-size="9.5" font-weight="700" fill="#1A1208">Static Files</text>
+  <text x="762" y="336" text-anchor="middle" font-size="8.5" fill="#3D2E12">GET /</text>
+
+  <!-- ── STORE LAYER ── -->
+  <rect x="60" y="384" width="780" height="80" rx="6" fill="#FDF8F0" stroke="#C9A96A" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="80" y="402" font-size="9" font-weight="800" fill="#6B5330" letter-spacing="1.5">IN-MEMORY STORE  (sync.RWMutex)</text>
+
+  <rect x="82"  y="412" width="178" height="38" rx="4" fill="#EAF3EC" stroke="#9DC9AB" stroke-width="1.5"/>
+  <text x="171" y="427" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2E6B3E">cards  map[string]*Card</text>
+  <text x="171" y="442" text-anchor="middle" font-size="8.5" fill="#2E6B3E">HashMap — O(1) lookup</text>
+
+  <rect x="282" y="412" width="198" height="38" rx="4" fill="#EAF3EC" stroke="#9DC9AB" stroke-width="1.5"/>
+  <text x="381" y="427" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2E6B3E">history  map[string][]Txn</text>
+  <text x="381" y="442" text-anchor="middle" font-size="8.5" fill="#2E6B3E">append-only log per card</text>
+
+  <rect x="502" y="412" width="178" height="38" rx="4" fill="#EAF3EC" stroke="#9DC9AB" stroke-width="1.5"/>
+  <text x="591" y="427" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2E6B3E">Atomic Withdraw()</text>
+  <text x="591" y="442" text-anchor="middle" font-size="8.5" fill="#2E6B3E">check + deduct in one lock</text>
+
+  <rect x="702" y="412" width="120" height="38" rx="4" fill="#EAF3EC" stroke="#9DC9AB" stroke-width="1.5"/>
+  <text x="762" y="427" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2E6B3E">SHA-256</text>
+  <text x="762" y="442" text-anchor="middle" font-size="8.5" fill="#2E6B3E">crypto/sha256</text>
+
+  <!-- ── TRANSACTION FLOW ── -->
+  <rect x="60" y="485" width="780" height="56" rx="6" fill="#FDF8F0" stroke="#C9A96A" stroke-width="1.5" filter="url(#sh)"/>
+  <text x="80" y="503" font-size="9" font-weight="800" fill="#6B5330" letter-spacing="1.5">TRANSACTION VALIDATION PIPELINE</text>
+
+  <rect x="82"  y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="126" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">① Parse Body</text>
+
+  <line x1="170" y1="521" x2="186" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="188" y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="232" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">② Card Exists</text>
+
+  <line x1="276" y1="521" x2="292" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="294" y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="338" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">③ ACTIVE?</text>
+
+  <line x1="382" y1="521" x2="398" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="400" y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="444" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">④ PIN Hash</text>
+
+  <line x1="488" y1="521" x2="504" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="506" y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="550" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">⑤ Type OK?</text>
+
+  <line x1="594" y1="521" x2="610" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="612" y="510" width="88" height="22" rx="3" fill="#D6BB87" stroke="#A8884E" stroke-width="1"/>
+  <text x="656" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1A1208">⑥ Amount &gt; 0</text>
+
+  <line x1="700" y1="521" x2="716" y2="521" stroke="#3D2E12" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="718" y="510" width="88" height="22" rx="3" fill="#2E6B3E" stroke="#1A4A26" stroke-width="1"/>
+  <text x="762" y="525" text-anchor="middle" font-size="8.5" font-weight="700" fill="#FBF6EC">⑦ Execute + Log</text>
+
+  <!-- connecting arrows between layers -->
+  <line x1="180" y1="144" x2="180" y2="185" stroke="#A8884E" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4,3"/>
+  <line x1="450" y1="144" x2="450" y2="185" stroke="#A8884E" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4,3"/>
+  <line x1="450" y1="253" x2="450" y2="278" stroke="#A8884E" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4,3"/>
+  <line x1="450" y1="358" x2="450" y2="384" stroke="#A8884E" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4,3"/>
+  <line x1="450" y1="464" x2="450" y2="485" stroke="#A8884E" stroke-width="1.5" marker-end="url(#arr)" stroke-dasharray="4,3"/>
+</svg>
