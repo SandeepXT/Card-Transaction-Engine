@@ -1,5 +1,9 @@
 # Card Transaction Engine
 
+🔗 **Live Demo:** https://card-transaction-engine-production.up.railway.app
+
+📁 **GitHub:** https://github.com/SandeepXT/Card-Transaction-Engine
+
 A payment-switch authorization engine built with Go, using only the standard library. Processes card transactions, validates PINs, maintains balances, and logs every attempt.
 
 ---
